@@ -673,7 +673,92 @@ footer{
 </section>
 
 <footer>© 57 DESIGN STUDIO 2018–2026 · TAIWAN</footer>
+</footer>
 
+<!-- ==========================================
+     ★ 新增：彈出視窗 (Modal) 的實際 HTML 結構
+     ========================================== -->
+<div id="projectModal" class="project-modal" style="display: none;">
+  <span class="modal-close">&times;</span>
+  <div class="modal-content">
+    <h3 id="modalTitle" class="modal-title">專案標題</h3>
+    <div id="modalImageContainer" class="modal-image-container">
+      <!-- 圖片會由 JavaScript 動態插入至此 -->
+    </div>
+  </div>
+</div>
+
+<script>
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const els = document.querySelectorAll('.reveal');
+if (prefersReduced) {
+  els.forEach(el => el.classList.add('in'));
+} else {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const imageContainer = document.getElementById('modalImageContainer');
+    const closeBtn = document.querySelector('.modal-close');
+    const projectEntries = document.querySelectorAll('.project-entry');
+
+    // 點擊專案入口
+    projectEntries.forEach(entry => {
+      entry.addEventListener('click', () => {
+        const title = entry.getAttribute('data-project-title');
+        const images = JSON.parse(entry.getAttribute('data-images'));
+
+        // 設定標題
+        modalTitle.textContent = title;
+
+        // 清空容器並動態塞入該專案所有圖片
+        imageContainer.innerHTML = '';
+        images.forEach((src, index) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `${title} - Image ${index + 1}`;
+          // 加上延遲動畫，讓圖片像瀑布一樣依序淡入
+          img.style.animationDelay = `${index * 0.15}s`;
+          imageContainer.appendChild(img);
+        });
+
+        // 顯示彈出視窗，並鎖定背後網頁的滾動
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // 點擊關閉按鈕
+    closeBtn.addEventListener('click', closeModal);
+
+    // 點擊背景空白處關閉
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // 按下 ESC 鍵關閉
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = ''; // 恢復網頁滾動
+    }
+  });
+</script>
+</body>
+</html>
 <script>
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const els = document.querySelectorAll('.reveal');
