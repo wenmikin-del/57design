@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>伍柒設計工作室 57 Design Studio｜音樂會視覺設計</title>
+<meta name="description" content="伍柒設計工作室專注於音樂會視覺設計——海報、邀請卡、節目冊、摺頁DM。從學生音樂會到國際級音樂家巡演，量身打造演出主視覺。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@200;300;400;500&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EAE7E1;         /* 暖灰白 */
+  --bg-soft:#E1DDD5;    /* 淺灰米 */
+  --ink:#494640;        /* 墨灰 */
+  --muted:#918D83;      /* 霧灰 */
+  --sage:#9AA093;       /* 灰綠 */
+  --clay:#B39E90;       /* 灰陶 */
+  --hair:#D3CEC5;       /* 髮絲線 */
+  --serif-latin:"Cormorant Garamond", serif;
+  --serif-tc:"Noto Serif TC", serif;
+  --utility:"Jost", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--serif-tc);
+  font-weight:300;
+  line-height:2;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--sage);color:#fff}
+a:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+.section{padding:130px 0}
+.eyebrow{
+  font-family:var(--utility);font-weight:300;
+  font-size:10.5px;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--sage);
+}
+h2.sec-title{
+  font-weight:400;font-size:clamp(24px,3vw,32px);
+  letter-spacing:.3em;margin:16px 0 8px;
+}
+.sec-latin{
+  font-family:var(--serif-latin);font-style:italic;font-weight:300;
+  color:var(--muted);font-size:16px;letter-spacing:.06em;
+}
+.hairline{border:0;height:1px;background:var(--hair);max-width:1040px;margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:26px 36px;
+  background:linear-gradient(180deg,rgba(234,231,225,.94),rgba(234,231,225,0));
+}
+.brand{
+  font-family:var(--serif-latin);font-weight:400;
+  font-size:19px;letter-spacing:.34em;color:var(--ink);text-decoration:none;
+  transition:letter-spacing .5s cubic-bezier(.22,.8,.3,1);
+}
+.brand:hover{letter-spacing:.42em}
+@media (prefers-reduced-motion: reduce){.brand:hover{letter-spacing:.34em}}
+nav ul{display:flex;gap:36px;list-style:none}
+nav a.link{
+  position:relative;
+  font-size:13px;letter-spacing:.32em;color:var(--muted);
+  text-decoration:none;transition:color .3s;
+  padding-bottom:4px;
+}
+nav a.link::after{
+  content:"";position:absolute;left:0;bottom:0;
+  width:100%;height:1px;background:var(--clay);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .4s cubic-bezier(.22,.8,.3,1);
+}
+nav a.link:hover{color:var(--ink)}
+nav a.link:hover::after{transform:scaleX(1);transform-origin:left}
+@media (max-width:640px){nav{padding:20px 22px} nav ul{gap:18px} nav a.link{letter-spacing:.14em}}
+
+/* ---------- hero ---------- */
+header{
+  min-height:100svh;position:relative;
+  display:flex;align-items:center;
+}
+.hero-grid{
+  display:flex;align-items:center;gap:clamp(40px,8vw,110px);
+  max-width:1040px;margin:0 auto;padding:0 28px;
+}
+.v-mark{
+  writing-mode:vertical-rl;
+  font-weight:400;font-size:16px;letter-spacing:.62em;
+  color:var(--muted);
+  border-right:1px solid var(--hair);
+  padding-right:26px;
+  animation:fade 1.6s ease both;
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.v-mark{animation:none}}
+.hero-body h1{
+  font-family:var(--serif-latin);font-weight:300;font-style:italic;
+  font-size:clamp(32px,5vw,54px);line-height:1.35;letter-spacing:.01em;
+  margin:20px 0 26px;
+}
+.hero-body h1 .cl{color:var(--clay)}
+.hero-body p{color:var(--muted);font-size:15px;max-width:44ch;font-weight:300}
+.hero-cta{
+  display:inline-block;margin-top:44px;
+  font-size:13.5px;letter-spacing:.38em;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--ink);padding-bottom:7px;
+  transition:color .3s,border-color .3s,padding-right .4s cubic-bezier(.22,.8,.3,1);
+}
+.hero-cta::after{
+  content:"→";display:inline-block;margin-left:10px;
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .35s,transform .4s cubic-bezier(.22,.8,.3,1);
+}
+.hero-cta:hover{color:var(--clay);border-color:var(--clay);padding-right:6px}
+.hero-cta:hover::after{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .hero-cta::after{opacity:1;transform:none}
+}
+.scrollhint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  font-family:var(--utility);font-weight:200;
+  font-size:10px;letter-spacing:.5em;color:var(--muted);
+}
+
+/* ---------- programme ---------- */
+.programme{max-width:780px;margin:70px auto 0;padding:0 28px}
+.prog-item{display:flex;align-items:baseline;gap:16px;padding:19px 0;cursor:default}
+.prog-item + .prog-item{border-top:1px solid var(--hair)}
+.prog-year{
+  font-family:var(--serif-latin);font-weight:400;
+  font-size:14.5px;color:var(--muted);letter-spacing:.1em;flex:0 0 50px;
+  transition:color .35s;
+}
+.prog-title{
+  font-size:15px;font-weight:400;letter-spacing:.06em;
+  transition:transform .45s cubic-bezier(.22,.8,.3,1);
+}
+.prog-title a,
+.prog-title a:hover,
+.prog-title a:visited,
+.prog-title a:active{
+  color:inherit;
+  text-decoration:none;
+  display:block;
+}
+.prog-item:hover .prog-year{color:var(--clay)}
+.prog-item:hover .prog-title{transform:translateX(8px)}
+.prog-item:hover .prog-venue{color:var(--ink)}
+@media (prefers-reduced-motion: reduce){
+  .prog-item:hover .prog-title{transform:none}
+}
+.prog-title em{
+  display:block;font-family:var(--serif-latin);font-style:italic;font-weight:300;
+  color:var(--muted);font-size:13.5px;
+}
+.prog-dots{flex:1;min-width:30px;border-bottom:1px dotted #C4BFB5;transform:translateY(-5px)}
+.prog-venue{font-size:12px;color:var(--muted);letter-spacing:.06em;text-align:right;max-width:38%;transition:color .35s}
+@media (max-width:640px){
+  .prog-item{flex-wrap:wrap}
+  .prog-dots{display:none}
+  .prog-venue{flex:1 0 100%;text-align:left;padding-left:66px}
+}
+
+/* ---------- gallery ---------- */
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
+  max-width:1040px;margin:80px auto 0;padding:0 28px;
+}
+@media (max-width:860px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.gallery{grid-template-columns:1fr}}
+.piece{text-decoration:none;color:inherit}
+.frame{
+  aspect-ratio:3/4;
+  background:var(--bg-soft);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  transition:transform .5s cubic-bezier(.22,.8,.3,1),box-shadow .5s;
+}
+.piece:hover .frame{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px -18px rgba(73,70,64,.28);
+}
+.frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+.piece:hover .frame img{transform:scale(1.03)}
+.piece .cap-tc{transition:color .35s}
+.piece:hover .cap-tc{color:var(--clay)}
+.piece:hover .ph{color:var(--clay);transition:color .5s}
+@media (prefers-reduced-motion: reduce){
+  .piece:hover .frame{transform:none;box-shadow:none}
+  .piece:hover .frame img{transform:none}
+}
+.frame .ph{
+  writing-mode:vertical-rl;
+  font-size:14px;letter-spacing:.42em;color:#B0AB9F;font-weight:300;
+}
+.piece figcaption{margin-top:16px}
+.cap-tc{font-size:13.5px;letter-spacing:.1em;font-weight:400}
+.cap-en{font-family:var(--serif-latin);font-style:italic;font-weight:300;font-size:13px;color:var(--muted)}
+
+/* ---------- services ---------- */
+.services{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  max-width:880px;margin:64px auto 0;padding:0 28px;
+}
+@media (max-width:680px){.services{grid-template-columns:1fr;gap:56px}}
+.svc h3{font-weight:400;font-size:16.5px;letter-spacing:.26em;margin-bottom:4px}
+.svc .svc-en{
+  font-family:var(--serif-latin);font-style:italic;font-weight:300;
+  color:var(--muted);font-size:14px;display:block;margin-bottom:24px;
+}
+.svc ul{list-style:none}
+.svc li{
+  position:relative;
+  padding:10px 0;font-size:14px;letter-spacing:.08em;font-weight:300;
+  border-bottom:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:16px;
+  transition:padding-left .4s cubic-bezier(.22,.8,.3,1);
+}
+.svc li::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:0;height:1px;background:var(--clay);
+  transition:width .4s cubic-bezier(.22,.8,.3,1);
+}
+.svc li:hover{padding-left:22px}
+.svc li:hover::before{width:14px}
+.svc li:last-child{border-bottom:0}
+@media (prefers-reduced-motion: reduce){
+  .svc li:hover{padding-left:0}
+  .svc li:hover::before{width:0}
+}
+.svc li span{color:var(--muted);font-size:12px;font-family:var(--utility);font-weight:300;letter-spacing:.08em}
+.svc-note{
+  max-width:880px;margin:40px auto 0;padding:0 28px;
+  color:var(--muted);font-size:13px;letter-spacing:.08em;text-align:center;font-weight:300;
+}
+
+/* ---------- process ---------- */
+.process{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:44px;
+  max-width:1000px;margin:70px auto 0;padding:0 28px;
+}
+@media (max-width:860px){.process{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.process{grid-template-columns:1fr}}
+.step{text-align:center}
+.step .mvt{
+  font-family:var(--serif-latin);font-style:italic;font-weight:300;
+  color:var(--muted);font-size:14.5px;transition:color .35s;
+}
+.step h4{font-weight:400;font-size:15.5px;letter-spacing:.24em;margin:12px 0 10px}
+.step p{color:var(--muted);font-size:13px;line-height:1.95;font-weight:300}
+.step .bar{
+  width:1px;height:20px;margin:14px auto 0;background:var(--hair);
+  transition:height .45s cubic-bezier(.22,.8,.3,1),background .45s;
+}
+.step:hover .mvt{color:var(--clay)}
+.step:hover .bar{height:38px;background:var(--clay)}
+@media (prefers-reduced-motion: reduce){
+  .step:hover .bar{height:20px}
+}
+
+/* ---------- about ---------- */
+.about{max-width:700px;margin:0 auto;padding:0 28px;text-align:center}
+.about p{font-size:15px;color:#5C5952;margin-top:34px;text-align:left;font-weight:300}
+.about .en{font-family:var(--serif-latin);font-style:italic;font-weight:300;font-size:15px;color:var(--muted)}
+
+/* ---------- contact ---------- */
+.contact{text-align:center;max-width:620px;margin:0 auto;padding:0 28px}
+.contact .big{
+  font-family:var(--serif-latin);font-style:italic;font-weight:300;
+  font-size:clamp(24px,3.4vw,34px);line-height:1.45;margin:20px 0 40px;
+}
+.contact a.mail{
+  display:inline-block;color:var(--ink);text-decoration:none;
+  font-family:var(--utility);font-weight:300;font-size:14px;letter-spacing:.26em;
+  border:1px solid var(--ink);padding:16px 46px;
+  transition:background .35s,color .35s,border-color .35s;
+}
+.contact a.mail:hover{background:var(--ink);color:var(--bg)}
+.contact .ig{
+  display:block;margin-top:26px;color:var(--muted);
+  font-family:var(--utility);font-weight:300;font-size:11.5px;letter-spacing:.34em;
+  text-decoration:none;
+}
+.contact .ig:hover{color:var(--ink)}
+footer{
+  border-top:1px solid var(--hair);margin-top:130px;
+  padding:38px 28px;text-align:center;
+  font-family:var(--utility);font-weight:200;
+  font-size:10.5px;letter-spacing:.36em;color:var(--muted);
+}
+</style>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伍柒設計 57design</title>
+
+  <!-- 這裡通常會有其他的 CSS 引入連結，比如： -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ==========================================
+       直接在這裡新增 <style> 標籤，把樣式貼進去：
+       ========================================== -->
+  <style>
+    /* 專案入口滑鼠樣式 */
+    .project-entry {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .project-entry:hover {
+      transform: translateY(-5px);
+    }
+
+    /* 彈出視窗背景遮罩 */
+    .project-modal {
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(26, 26, 26, 0.95); /* 深色高級感背景 */
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 20px;
+      box-sizing: border-box;
+    }
+
+    /* 關閉按鈕 */
+    .modal-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 200;
+      cursor: pointer;
+      z-index: 1010;
+      transition: color 0.3s ease;
+    }
+    .modal-close:hover {
+      color: var(--sage, #8fa382); /* 懸停時變成草綠色主題色（若無變數則套用備用綠色） */
+    }
+
+    /* 內容量容器 */
+    .modal-content {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 彈出視窗內的專案標題 */
+    .modal-title {
+      color: #fff;
+      font-family: var(--serif-tc, "Noto Serif TC", serif);
+      font-size: 2rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    /* 圖片容器：讓圖片一張接一張優雅地往下排列 */
+    .modal-image-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px; /* 圖片之間的間距 */
+      align-items: center;
+    }
+
+    .modal-image-container img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border-radius: 2px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    /* 圖片淡入動畫 */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+</head>
+<body>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">57 DESIGN</a>
+  <ul>
+    <li><a class="link" href="#works">作品</a></li>
+    <li><a class="link" href="#services">服務</a></li>
+    <li><a class="link" href="#process">流程</a></li>
+    <li><a class="link" href="#contact">聯絡</a></li>
+  </ul>
+</nav>
+
+<header id="top">
+  <div class="hero-grid">
+    <div class="v-mark">伍柒設計工作室</div>
+    <div class="hero-body">
+      <span class="eyebrow">Visual Design for Music Events · Since 2018</span>
+      <h1>May the beauty I bring<br>be the beauty <span class="cl">you're</span><br><span class="cl">looking for.</span></h1>
+      <p>專注於音樂會視覺設計。從學生音樂會到國際音樂家巡演，海報、邀請卡、節目冊到整套演出視覺，為每一場演出安靜而準確地，做好舞台之外的第一印象。</p>
+      <a class="hero-cta" href="#works">作品選粹</a>
+    </div>
+  </div>
+  <div class="scrollhint">SCROLL</div>
+</header>
+
+<hr class="hairline">
+
+<!-- ============ SELECTED WORKS ============ -->
+<section class="section" id="works">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal">Selected Works</span>
+    <h2 class="sec-title reveal">作品選粹</h2>
+    <p class="sec-latin reveal">programme</p>
+  </div>
+
+  <div class="programme">
+    <div class="prog-item reveal">
+      <span class="prog-year">2024</span>
+      <span class="prog-title"><a href="https://www.opentix.life/event/1825831520133664769?srsltid=AfmBOopfPadtVizwnSjRvk8MpmJsCNZ2-4CD2mQbRj1zK77jcwvXI5CQ" target="_blank" rel="noopener noreferrer">皮耶絲重返台灣<em>Pires in Taiwan — Tour 2024</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">國家音樂廳・臺中國家歌劇院・衛武營</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2024</span>
+      <span class="prog-title"><a href="https://www.npac-weiwuying.org/programs/65e14d9c4d6769000805a266" target="_blank" rel="noopener noreferrer">鄧泰山鋼琴獨奏會<em>Dang Thai Son Piano Recital</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">國家音樂廳・衛武營音樂廳</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2024</span>
+      <span class="prog-title"><a href="https://www.opentix.life/event/1710215215563522049?srsltid=AfmBOoq6jvnVIKVq44Y3Krn-toWtZba1uXFUT0bitlu9a-_fxfQbMq2A" target="_blank" rel="noopener noreferrer">王昱翔薩克斯風獨奏會：法國作品集Ⅰ<em>French Saxophone Recital</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">兩廳院演奏廳・衛武營表演廳</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2024</span>
+      <span class="prog-title"><a href="https://www.opentix.life/event/1793935286960549889?srsltid=AfmBOoo05acqbabORNztdegDLcGiMnHRhnG4iq1Miw91ZgQmb-atrwWU" target="_blank" rel="noopener noreferrer">宇集薩克斯風重奏團：Multiverse<em>UniverSax Ensemble Annual Concert</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">衛武營表演廳</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2022</span>
+      <span class="prog-title"><a href="https://www.opentix.life/event/1584807450801618946?srsltid=AfmBOoq8PLHsYNY6dC3fjOzeMvfHEtwYidmveNODFE5ZX-thJyNJxoj_" target="_blank" rel="noopener noreferrer">皮耶絲在台灣<em>Maria João Pires — Debut in Taiwan</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">國家音樂廳・衛武營音樂廳</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2022</span>
+      <span class="prog-title"><a href="https://www.npac-ntt.org/program/events/c-yHmd0O8rinB" target="_blank" rel="noopener noreferrer">靜在不言：陳必先鋼琴獨奏會<em>Pi-Hsien Chen Piano Recital</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">臺中國家歌劇院</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2021</span>
+      <span class="prog-title"><a href="https://www.npac-weiwuying.org/programs/6017d4d4fb81540009f63812" target="_blank" rel="noopener noreferrer">TSMC 樂無界：巴赫無伴奏大提琴組曲全集<em>BACH — Cello Suites Nos. 1–6</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">臺中國家歌劇院</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2020</span>
+      <span class="prog-title"><a href="https://www.npac-ntt.org/program/events/c-eTJtZnPUgzB" target="_blank" rel="noopener noreferrer">世界巡禮：王昱翔薩克斯風劇場式音樂會<em>Saxophone World Tour</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">臺中國家歌劇院</span>
+    </div>
+    <div class="prog-item reveal">
+      <span class="prog-year">2020</span>
+      <span class="prog-title"><a href="https://www.npac-ntt.org/program/events/c-3NjfB6qAepG" target="_blank" rel="noopener noreferrer">美律 45 週年感恩禮讚<em>Merry 45th Anniversary Concert</em></a></span>
+      <span class="prog-dots"></span>
+      <span class="prog-venue">臺中國家歌劇院</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+     伍柒設計 專案作品集入口 (Click to view gallery)
+     ========================================== -->
+<div class="gallery">
+
+  <!-- 法國作品集 -->
+  <figure class="piece reveal project-entry" 
+          data-project-title="法國作品集"
+          data-images='["images/法國作品集/法國作品集I_0223_57design.jpg", "images/法國作品集/法國作品集I-節目冊.png"]'>
+    <div class="frame" style="width: 100%; max-width: 300px; height: 424px; overflow: hidden; border-radius: 4px;">
+      <img src="images/法國作品集/法國作品集I_0223_57design.jpg" alt="法國作品集" 
+           style="width: 50%; height: 50%; object-fit: cover; object-position: center;">
+    </div>
+    <figcaption>
+      <div class="cap-tc">法國作品集</div>
+      <div class="cap-en">Poster · Programme (2 pieces) · Click to view</div>
+    </figcaption>
+  </figure>
+
+  <!-- Pires in Taiwan -->
+  <figure class="piece reveal project-entry" 
+          data-project-title="Pires in Taiwan"
+          data-images='["images/pires in Taiwan/01_封面.png", "images/pires in Taiwan/02_藝術家頁.png", "images/pires in Taiwan/03_曲目頁.png", "images/pires in Taiwan/04_訪談頁.png", "images/pires in Taiwan/05_樂曲解說.png", "images/pires in Taiwan/06_總結.png"]'>
+    <div class="frame" style="width: 100%; max-width: 300px; height: 424px; overflow: hidden; border-radius: 4px;">
+      <img src="images/pires in Taiwan/01_封面.png" alt="Pires in Taiwan" 
+           style="width: 50%; height: 50%; object-fit: cover; object-position: center;">
+    </div>
+    <figcaption>
+      <div class="cap-tc">Pires in Taiwan</div>
+      <div class="cap-en">Full Concert Identity (6 pieces) · Click to view</div>
+    </figcaption>
+  </figure>
+
+  <!-- Multivers -->
+  <figure class="piece reveal project-entry" 
+          data-project-title="Multivers"
+          data-images='["images/maltivers/Multivers.jpg", "images/maltivers/Multivers2.jpg", "images/maltivers/Multivers21.jpg", "images/maltivers/Multivers22.jpg", "images/maltivers/Multivers29.jpg", "images/maltivers/Multivers3.jpg", "images/maltivers/Multivers5.jpg", "images/maltivers/Multivers6.jpg", "images/maltivers/海報網頁圖檔.jpg"]'>
+    <div class="frame" style="width: 100%; max-width: 300px; height: 424px; overflow: hidden; border-radius: 4px;">
+      <img src="images/maltivers/Multivers.jpg" alt="Multivers" 
+           style="width: 50%; height: 50%; object-fit: cover; object-position: center;">
+    </div>
+    <figcaption>
+      <div class="cap-tc">Multivers</div>
+      <div class="cap-en">Annual Concert Visual (9 pieces) · Click to view</div>
+    </figcaption>
+  </figure>
+
+  <!-- 學生音樂會 -->
+  <figure class="piece reveal project-entry" 
+          data-project-title="學生音樂會系列"
+          data-images='["images/學生音樂會/曙_A2海報_57design_230325.jpg", "images/學生音樂會/0609-V2.jpg", "images/學生音樂會/105812856.png", "images/學生音樂會/178378135_orig.jpeg", "images/學生音樂會/701695170.jpeg", "images/學生音樂會/A2-海報.png", "images/學生音樂會/A2海報0519.jpg", "images/學生音樂會/water-journal-evvsegvoue-unsplash-orig_orig.png", "images/學生音樂會/海報_A3_57design.jpg", "images/學生音樂會/海報_二修0330.png"]'>
+    <div class="frame" style="width: 100%; max-width: 300px; height: 424px; overflow: hidden; border-radius: 4px;">
+      <img src="images/學生音樂會/曙_A2海報_57design_230325.jpg" alt="學生音樂會" 
+           style="width: 50%; height: 50%; object-fit: cover; object-position: center;">
+    </div>
+    <figcaption>
+      <div class="cap-tc">學生音樂會系列</div>
+      <div class="cap-en">Concert Posters & Graphics (10 pieces) · Click to view</div>
+    </figcaption>
+  </figure>
+
+
+   <!-- 書冊與節目單設計 -->
+  <figure class="piece reveal project-entry" 
+          data-project-title="書冊與編輯設計"
+          data-images='["images/書冊設計/860710905_orig.jpg", "images/書冊設計/0501_orig.png", "images/書冊設計/0503_orig.png", "images/書冊設計/0504_orig.png", "images/書冊設計/268838941.png", "images/書冊設計/495504364-2_orig.jpg", "images/書冊設計/568586262.png", "images/書冊設計/659827006_orig.png", "images/書冊設計/688091675.png"]'>
+    <div class="frame" style="width: 100%; max-width: 300px; height: 424px; overflow: hidden; border-radius: 4px;">
+      <img src="images/書冊設計/860710905_orig.jpg" alt="書冊與編輯設計" 
+           style="width: 50%; height: 50%; object-fit: cover; object-position: center;">
+    </div>
+    <figcaption>
+      <div class="cap-tc">書冊與編輯設計</div>
+      <div class="cap-en">Editorial & Layout Design (9 pieces) · Click to view</div>
+    </figcaption>
+  </figure>
+
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal">Services</span>
+    <h2 class="sec-title reveal">設計服務</h2>
+  </div>
+  <div class="services reveal">
+    <div class="svc">
+      <h3>音樂會專案設計</h3>
+      <span class="svc-en">Concert Identity</span>
+      <ul>
+        <li>演出主視覺・海報 <span>POSTER / KEY VISUAL</span></li>
+        <li>邀請卡 <span>INVITATION</span></li>
+        <li>節目冊 <span>PROGRAMME BOOK</span></li>
+        <li>摺頁 DM・節目單 <span>FOLDED DM / LEAFLET</span></li>
+        <li>Banner・數位宣傳圖 <span>WEB & SOCIAL</span></li>
+      </ul>
+    </div>
+    <div class="svc">
+      <h3>其他平面設計</h3>
+      <span class="svc-en">Graphic Design</span>
+      <ul>
+        <li>商務名片 <span>BUSINESS CARD</span></li>
+        <li>DM・菜單 <span>FLYER / MENU</span></li>
+        <li>活動背板 <span>BACKDROP</span></li>
+        <li>貼紙・週邊 <span>STICKER & MERCH</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="svc-note reveal">學生團體另有專屬包套方案（海報＋邀請卡＋節目冊）。報價依專案規模與規格提供，歡迎來信洽詢。</p>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ PROCESS ============ -->
+<section class="section" id="process">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal">Process</span>
+    <h2 class="sec-title reveal">合作流程</h2>
+    <p class="sec-latin reveal">in four movements</p>
+  </div>
+  <div class="process">
+    <div class="step reveal">
+      <span class="mvt">Ⅰ. Prélude</span>
+      <h4>洽談與報價</h4>
+      <p>了解演出主題、曲目與需求，確認品項規格、時程與報價。</p>
+      <div class="bar"></div>
+    </div>
+    <div class="step reveal">
+      <span class="mvt">Ⅱ. Thème</span>
+      <h4>主視覺提案</h4>
+      <p>從音樂內容出發，提出主視覺方向，確立整套演出的視覺語言。</p>
+      <div class="bar"></div>
+    </div>
+    <div class="step reveal">
+      <span class="mvt">Ⅲ. Variations</span>
+      <h4>延伸與修改</h4>
+      <p>延伸至邀請卡、節目冊等品項，含三次修改，逐步收攏細節。</p>
+      <div class="bar"></div>
+    </div>
+    <div class="step reveal">
+      <span class="mvt">Ⅳ. Finale</span>
+      <h4>完稿與印製</h4>
+      <p>輸出印刷檔並對接印刷廠，確保成品如期、如實呈現。</p>
+      <div class="bar"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ ABOUT ============ -->
+<section class="section">
+  <div class="about">
+    <span class="eyebrow reveal">Meet 57</span>
+    <h2 class="sec-title reveal">關於伍柒</h2>
+    <p class="reveal">專注於音樂領域的視覺設計，擁有多年為國際頂尖音樂家提供高端設計服務的經驗。憑藉音樂與設計的雙重背景，深知一場演出從曲目到舞台的每個細節——因此能將音樂的語言轉譯為視覺，從學生族群到專業音樂家，為各類客戶量身打造高品質的音樂會主視覺設計。</p>
+    <p class="en reveal">Focused on visual design for the music industry. With a background in both music and design, I create tailored concert visuals for clients ranging from students to internationally acclaimed musicians.</p>
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="contact">
+    <span class="eyebrow reveal">Contact</span>
+    <p class="big reveal">Let's design the first impression<br>of your next concert.</p>
+    <a class="mail reveal" href="mailto:hello@57design.studio">來信洽詢</a>
+    <a class="ig reveal" href="https://www.instagram.com/57design_studio" target="_blank" rel="noopener">INSTAGRAM · 57DESIGN_STUDIO</a>
+  </div>
+</section>
+
+<footer>© 57 DESIGN STUDIO 2018–2026 · TAIWAN</footer>
+
+<script>
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const els = document.querySelectorAll('.reveal');
+if (prefersReduced) {
+  els.forEach(el => el.classList.add('in'));
+} else {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const imageContainer = document.getElementById('modalImageContainer');
+    const closeBtn = document.querySelector('.modal-close');
+    const projectEntries = document.querySelectorAll('.project-entry');
+
+    // 點擊專案入口
+    projectEntries.forEach(entry => {
+      entry.addEventListener('click', () => {
+        const title = entry.getAttribute('data-project-title');
+        const images = JSON.parse(entry.getAttribute('data-images'));
+
+        // 設定標題
+        modalTitle.textContent = title;
+
+        // 清空容器並動態塞入該專案所有圖片
+        imageContainer.innerHTML = '';
+        images.forEach((src, index) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `${title} - Image ${index + 1}`;
+          // 加上延遲動畫，讓圖片像瀑布一樣依序淡入
+          img.style.animationDelay = `${index * 0.15}s`;
+          imageContainer.appendChild(img);
+        });
+
+        // 顯示彈出視窗，並鎖定背後網頁的滾動
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // 點擊關閉按鈕
+    closeBtn.addEventListener('click', closeModal);
+
+    // 點擊背景空白處關閉
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // 按下 ESC 鍵關閉
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = ''; // 恢復網頁滾動
+    }
+  });
+</script>
+</body>
+
+</html>
